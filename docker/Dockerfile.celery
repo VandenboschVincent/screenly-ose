@@ -1,5 +1,16 @@
 FROM screenly/srly-ose-base
 
+# This list needs to be trimmed back later
+RUN apt-get update && \
+    apt-get -y install --no-install-recommends \
+        python-dev \
+        python-gobject \
+        python-netifaces \
+        python-pip \
+        python-setuptools \
+    apt-get clean
+
+# Install Python requirements
 COPY requirements/requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
