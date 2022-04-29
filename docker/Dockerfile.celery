@@ -1,13 +1,7 @@
 FROM screenly/srly-ose-base
 
-RUN apt-get update && \
-    apt-get -y install --no-install-recommends \        
-        python-pip \
-    && \
-    apt-get clean
-
 # Install Python requirements
-COPY requirements/requirements.txt /tmp/requirements.txt
+ADD requirements/requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 RUN mkdir -p /usr/src/app
